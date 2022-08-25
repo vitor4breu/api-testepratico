@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q7Ssn1JY6XR/p+J6djqsCh+cxx8c97sPvStWzV5OxbOxwlmutVi3ZtDgQvM/jqaex4aSOm79oens/60DPjOAHg==",
+  "dgSpecHash": "qTe8E6gOcXZo6mvZKdzy1i9URvP7eRbFegZ//aWrhVi/EUdzTDA0zGVxedXHhCg+aijKyzhMqwCh223LlMMFAg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infraestrutura.csproj",
+  "projectFilePath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
