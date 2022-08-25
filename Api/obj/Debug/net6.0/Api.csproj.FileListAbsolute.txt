@@ -25,3 +25,17 @@ C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\obj\
 C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\obj\Debug\net6.0\Api.pdb
 C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\obj\Debug\net6.0\Api.genruntimeconfig.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\obj\Debug\net6.0\ref\Api.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Domain.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Service.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Domain.pdb
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\vitor\OneDrive\Área de Trabalho\TestePratico\api-testepratico\Api\bin\Debug\net6.0\Service.pdb
