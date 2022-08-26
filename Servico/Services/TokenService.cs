@@ -20,13 +20,14 @@ namespace Service.Services
             _configuration = configuration;
         }
 
-        public string CreateToken(string username)
+        public string CreateToken(
+            string username
+            )
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var key = _configuration.GetValue<string>("TokenKey");
 
-            Console.WriteLine(key);
             var keyBytes = Encoding.ASCII.GetBytes(key);
 
             var tokenDescriptor = new SecurityTokenDescriptor

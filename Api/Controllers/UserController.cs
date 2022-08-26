@@ -6,7 +6,7 @@ namespace Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -17,10 +17,10 @@ namespace Api.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult GetUsers()
+        public async Task<IActionResult> GetUsersAsync()
         {
-            var users = _userService.ReturnUsers();
-            return Ok(users);
+            var users = await _userService.ReturnUsersAsync();
+            return GerarRetorno(users, false);
         }
     }
 }

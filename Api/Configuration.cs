@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces.Repositorios;
 using Domain.Interfaces.Services;
 using Domain.Interfaces.Servicos;
+using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -22,7 +23,6 @@ namespace Api
 
             var key = configuration.GetValue<string>("TokenKey");
 
-            Console.WriteLine(key);
             var keyBytes = Encoding.ASCII.GetBytes(key);
 
             ServicesConfiguration.AddAuthentication(auth =>
@@ -96,6 +96,7 @@ namespace Api
             ConfigureRepositories(ServicesConfiguration);
             ConfigureSwagger(ServicesConfiguration);
             ConfigureTokenJwt(ServicesConfiguration, Configuration);
+            ServicesConfiguration.AddSingleton<SqlConnection>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Domain.Interfaces.Repositorios;
 using Domain.Interfaces.Servicos;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace Service.Services
             _userRepository = userRepository;
         }
 
-        public IEnumerable<string> ReturnUsers()
+        public async Task<IEnumerable<User>> ReturnUsersAsync()
         {
-            return _userRepository.SelectUsers();
+            return await _userRepository.SelectUsers();
         }
     }
 }

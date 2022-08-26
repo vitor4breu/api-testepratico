@@ -1,17 +1,30 @@
 ﻿using Domain.Interfaces.Repositorios;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data.Common;
+using Dapper;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Models;
 
 namespace Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public IEnumerable<string> SelectUsers()
+        private readonly SqlConnection _connection;
+
+        public UserRepository(SqlConnection connection)
         {
-            return new List<string>();
+            _connection = connection;
+        }
+
+        public async Task<IEnumerable<User>> SelectUsers()
+        {
+            using DbConnection connection = _connection.Sql;
+
+            const string sqlCommand = "SELECT Username, Id FROM tb_usuarios";
+
+            return await connection.QueryAsync<User>(sqlCommand);
         }
     }
 }

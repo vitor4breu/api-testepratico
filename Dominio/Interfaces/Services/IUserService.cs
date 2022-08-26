@@ -1,7 +1,9 @@
-﻿namespace Domain.Interfaces.Servicos
+﻿using Domain.Models;
+
+namespace Domain.Interfaces.Servicos
 {
     public interface IUserService
     {
-        public IEnumerable<string> ReturnUsers();
+        public Task<IEnumerable<User>> ReturnUsersAsync();
     }
 }

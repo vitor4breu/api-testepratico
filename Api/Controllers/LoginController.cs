@@ -6,7 +6,7 @@ namespace Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : BaseController
     {
         private readonly ILoginService _loginService;
 
@@ -16,10 +16,10 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostLogin(Login login)
+        public async Task<IActionResult> PostLoginAsync(Login login)
         {
-            var tokenLogin = _loginService.Login(login.Username, login.Password);
-            return tokenLogin != null ? Ok(tokenLogin) : Unauthorized();
+            var tokenLogin = await _loginService.Login(login.Username, login.Password);
+            return GerarRetorno(tokenLogin, tokenLogin == null);
         }
     }
 }

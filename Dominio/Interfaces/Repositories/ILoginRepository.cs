@@ -2,6 +2,6 @@
 {
     public interface ILoginRepository
     {
-        public bool SelectLogin(string username, string password);
+        public Task<bool> SelectLogin(string username, string password);
     }
 }

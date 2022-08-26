@@ -1,7 +1,9 @@
-﻿namespace Domain.Interfaces.Repositorios
+﻿using Domain.Models;
+
+namespace Domain.Interfaces.Repositorios
 {
     public interface IUserRepository
     {
-        public IEnumerable<string> SelectUsers();
+        public Task<IEnumerable<User>> SelectUsers();
     }
 }

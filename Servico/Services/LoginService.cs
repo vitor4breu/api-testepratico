@@ -19,17 +19,13 @@ namespace Service.Services
             _tokenService = tokenService;
         }
 
-        public string Login(
+        public async Task<string?> Login(
             string username,
             string password
             )
         {
-            var login = _loginRepository.SelectLogin(username, password);
-            if (login)
-            {
-                return _tokenService.CreateToken(username);
-            }
-            return null;
+            var login = await _loginRepository.SelectLogin(username, password);
+            return login ? _tokenService.CreateToken(username) : null;
         }
     }
 }
