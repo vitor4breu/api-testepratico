@@ -1,6 +1,7 @@
 using Domain.Interfaces.Servicos;
 using Domain.Models;
 using Domain.Retorno;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -17,7 +18,8 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Autenticar(Login login)
+        [AllowAnonymous]
+        public async Task<IActionResult> Autenticar([FromBody] Login login)
         {
             var tokenLogin = await _authService.Autenticar(login.Username, login.Password);
             return GerarRetorno(tokenLogin);

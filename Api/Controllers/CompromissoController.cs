@@ -27,7 +27,7 @@ namespace Api.Controllers
 
         [HttpGet("{idUsuario}")]
         [Authorize]
-        public async Task<IActionResult> ObterCompromissos(int idUsuario)
+        public async Task<IActionResult> ObterCompromissos([FromQuery] int idUsuario)
         {
             var users = await _compromissoService.BuscarCompromissosPorUsuario(idUsuario);
             return GerarRetorno(users);
@@ -35,7 +35,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> InserirCompromissos(CompromissoDto compromisso)
+        public async Task<IActionResult> InserirCompromissos([FromBody] CompromissoDto compromisso)
         {
             var users = await _compromissoService.InserirCompromisso(compromisso);
             return GerarRetorno(users);
@@ -43,7 +43,7 @@ namespace Api.Controllers
 
         [HttpDelete("{idCompromisso}")]
         [Authorize]
-        public async Task<IActionResult> DeletarCompromisso(int idCompromisso)
+        public async Task<IActionResult> DeletarCompromisso([FromQuery] int idCompromisso)
         {
             var users = await _compromissoService.DeletarCompromisso(idCompromisso);
             return GerarRetorno(users);
@@ -51,7 +51,7 @@ namespace Api.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> AlterarCompromisso(CompromissoAlteradoDto compromisso)
+        public async Task<IActionResult> AlterarCompromisso([FromBody] CompromissoAlteradoDto compromisso)
         {
             var users = await _compromissoService.AlterarCompromisso(compromisso);
             return GerarRetorno(users);
