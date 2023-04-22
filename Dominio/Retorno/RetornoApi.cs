@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Domain.Retorno
 {
     public class RetornoApi<T>
     {
         public T Retorno { get; set; }
-        public bool ContemErro { get; set; }
+        public MensagemRetorno Mensagens { get; set; }
 
 
-        public RetornoApi(T retorno, bool contemErro)
+        public RetornoApi(T retorno, MensagemRetorno mensagens)
         {
             Retorno = retorno;
-            ContemErro = contemErro;
+            Mensagens = mensagens;
         }
 
 

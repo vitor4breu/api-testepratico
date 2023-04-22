@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5N4Tx379LVKF14qfX8JcKfv8iEgxR79YYGC46tO4fSpUeNB5I6gxnIO8+cWwxbEFpRm04ZR+2c99/2ZBCfBkOQ==",
+  "dgSpecHash": "WFxp5VQt/9ef3sjV6WEv9UbXdoin00fos1YnTFnCyL0EXbSEtMav6zdSt1BLK5WaYiG8J1i5Xgh5Zc0eJczNug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj",
+  "projectFilePath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\vitor\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",

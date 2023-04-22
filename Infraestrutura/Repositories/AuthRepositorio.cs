@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class LoginRepository : ILoginRepository
+    public class AuthRepositorio : IAuthRepositorio
     {
-        private readonly SqlConnection _connection;
+        private readonly ConexaoSQL _connection;
 
-        public LoginRepository(SqlConnection connection)
+        public AuthRepositorio(ConexaoSQL connection)
         {
             _connection = connection;
         }
 
-        public async Task<bool> SelectLogin(string username, string password)
+        public async Task<bool> ObterUsuarioAutenticado(string usuario, string senha)
         {
             using DbConnection connection = _connection.Sql;
             var variables = new DynamicParameters();
 
-            variables.Add("username", username, System.Data.DbType.String, size: 30);
-            variables.Add("password", password, System.Data.DbType.String, size: 30);
+            variables.Add("USUARIO", usuario, System.Data.DbType.String, size: 30);
+            variables.Add("SENHA", senha, System.Data.DbType.String, size: 30);
 
             const string sqlCommand = @"
-                SELECT 1 FROM tb_usuarios 
-                WHERE username = @username AND password = @password
+                SELECT 1 FROM usuarios
+                WHERE usuario = @USUARIO AND senha = @SENHA
             ";
             var sqlConsult = await connection.QueryFirstOrDefaultAsync<string>(sqlCommand, variables);
             return sqlConsult != null;

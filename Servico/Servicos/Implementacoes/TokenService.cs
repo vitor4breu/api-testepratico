@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Services
+namespace Service.Services.Implementacoes
 {
     public class TokenService : ITokenService
     {

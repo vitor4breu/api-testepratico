@@ -1,7 +1,6 @@
 ﻿using Domain;
+using Domain.Retorno;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 
 namespace Api.Controllers
 {
@@ -9,10 +8,17 @@ namespace Api.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
-        protected IActionResult GerarRetorno<T>(T retorno, bool contemErro)
+        private MensagemRetorno _mensagens { get; set; }
+
+        public BaseController(MensagemRetorno mensagens)
         {
-            var retornoApi = new RetornoApi<T>(retorno, contemErro);
-            if (contemErro)
+            _mensagens = mensagens;
+        }
+
+        protected IActionResult GerarRetorno<T>(T retorno)
+        {
+            var retornoApi = new RetornoApi<T>(retorno, _mensagens);
+            if (_mensagens.ContemErro)
                 return BadRequest(retornoApi);
             return Ok(retornoApi);
         }

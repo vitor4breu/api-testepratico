@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Api\\Api.csproj": {}
+    "C:\\Users\\vitor\\Desktop\\api-testepratico\\Api\\Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Api\\Api.csproj": {
+    "C:\\Users\\vitor\\Desktop\\api-testepratico\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Api\\Api.csproj",
+        "projectUniqueName": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Api\\Api.csproj",
+        "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Api\\Api.csproj",
         "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Api\\obj\\",
+        "outputPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj": {
-                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj"
+              "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj"
               },
-              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj"
+              "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\Infrastructure.csproj"
               },
-              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj": {
-                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj"
+              "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj"
               }
             }
           }
@@ -54,6 +50,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.8, )"
@@ -69,7 +69,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,25 +82,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj": {
+    "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj",
+        "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj",
         "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -130,7 +127,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -139,25 +137,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj": {
+    "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Infraestrutura\\obj\\",
+        "outputPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Infraestrutura\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -171,8 +165,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj": {
-                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj"
+              "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj"
               }
             }
           }
@@ -187,6 +181,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
@@ -194,10 +192,6 @@
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[6.0.6, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -210,7 +204,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -219,25 +214,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj": {
+    "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj",
-        "projectName": "Service",
-        "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj",
+        "projectName": "Servico",
+        "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\Servico.csproj",
         "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Servico\\obj\\",
+        "outputPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Servico\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -251,8 +242,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj": {
-                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\TestePratico\\api-testepratico\\Dominio\\Domain.csproj"
+              "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Desktop\\api-testepratico\\Dominio\\Domain.csproj"
               }
             }
           }
@@ -267,6 +258,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -286,7 +281,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -295,7 +291,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

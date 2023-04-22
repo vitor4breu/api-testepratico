@@ -1,19 +1,22 @@
-﻿using Domain.Interfaces.Repositorios;
+﻿using AutoMapper;
+using Domain.Interfaces.Repositorios;
 using Domain.Interfaces.Services;
 using Domain.Interfaces.Servicos;
+using Domain.Retorno;
 using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Service.Services;
+using Service.Services.Implementacoes;
 using System.Text;
 
 namespace Api
 {
-    public static class Configuration
+    public static class Configuracao
     {
-        private static void ConfigureTokenJwt(IServiceCollection ServicesConfiguration, IConfiguration configuration)
+        private static void ConfigurarTokenJwt(IServiceCollection ServicesConfiguration, IConfiguration configuration)
         {
             ServicesConfiguration.AddAuthentication(config =>
             {
@@ -43,7 +46,7 @@ namespace Api
             });
         }
 
-        private static void ConfigureSwagger(IServiceCollection ServicesConfiguration)
+        private static void ConfigurarSwagger(IServiceCollection ServicesConfiguration)
         {
             ServicesConfiguration.AddSwaggerGen(c =>
             {
@@ -75,28 +78,35 @@ namespace Api
 
         }
 
-        private static void ConfigureServices(IServiceCollection ServicesConfiguration)
+        private static void ConfigurarServicos(IServiceCollection ServicesConfiguration)
         {
-            ServicesConfiguration.AddScoped<ILoginService, LoginService>();
-            ServicesConfiguration.AddScoped<IUserService, UserService>();
+            ServicesConfiguration.AddScoped<IAuthService, AuthService>();
+            ServicesConfiguration.AddScoped<ICompromissoServico, CompromissoServico>();
             ServicesConfiguration.AddScoped<ITokenService, TokenService>();
 
         }
 
-        private static void ConfigureRepositories(IServiceCollection ServicesConfiguration)
+        private static void ConfigurarRepositorios(IServiceCollection ServicesConfiguration)
         {
-            ServicesConfiguration.AddSingleton<IUserRepository, UserRepository>();
-            ServicesConfiguration.AddSingleton<ILoginRepository, LoginRepository>();
+            ServicesConfiguration.AddSingleton<ICompromissoRepositorio, CompromissoRepositorio>();
+            ServicesConfiguration.AddSingleton<IAuthRepositorio, AuthRepositorio>();
         }
 
 
-        public static void Configure(IServiceCollection ServicesConfiguration, IConfiguration Configuration)
+        public static void Configurar(IServiceCollection ServicesConfiguration, IConfiguration Configuration)
         {
-            ConfigureServices(ServicesConfiguration);
-            ConfigureRepositories(ServicesConfiguration);
-            ConfigureSwagger(ServicesConfiguration);
-            ConfigureTokenJwt(ServicesConfiguration, Configuration);
-            ServicesConfiguration.AddSingleton<SqlConnection>();
+            ConfigurarServicos(ServicesConfiguration);
+            ConfigurarRepositorios(ServicesConfiguration);
+            ConfigurarSwagger(ServicesConfiguration);
+            ConfigurarTokenJwt(ServicesConfiguration, Configuration);
+
+            var mapperConfig = AdapterDtoDomain.MapperRegister();
+            var mapper = mapperConfig.CreateMapper();
+
+            ServicesConfiguration
+                .AddSingleton<ConexaoSQL>()
+                .AddScoped<MensagemRetorno>()
+                .AddSingleton(mapper);
         }
     }
 }

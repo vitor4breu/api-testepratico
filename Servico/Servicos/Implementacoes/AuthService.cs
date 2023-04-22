@@ -2,29 +2,29 @@
 using Domain.Interfaces.Services;
 using Domain.Interfaces.Servicos;
 
-namespace Service.Services
+namespace Service.Services.Implementacoes
 {
-    public class LoginService : ILoginService
+    public class AuthService : IAuthService
     {
-        private readonly ILoginRepository _loginRepository;
+        private readonly IAuthRepositorio _authRepositorio;
         private readonly ITokenService _tokenService;
 
-        public LoginService
+        public AuthService
             (
-            ILoginRepository loginRepository,
+            IAuthRepositorio authRepository,
             ITokenService tokenService
             )
         {
-            _loginRepository = loginRepository;
+            _authRepositorio = authRepository;
             _tokenService = tokenService;
         }
 
-        public async Task<string?> Login(
+        public async Task<string?> Autenticar(
             string username,
             string password
             )
         {
-            var login = await _loginRepository.SelectLogin(username, password);
+            var login = await _authRepositorio.ObterUsuarioAutenticado(username, password);
             return login ? _tokenService.CreateToken(username) : null;
         }
     }
