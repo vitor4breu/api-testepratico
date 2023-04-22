@@ -26,6 +26,7 @@ namespace Service.Services.Implementacoes
             try
             {
                 var retorno = await _compromissoRepositorio.AlterarCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
+                if (!retorno) _mensagens.AdicionarAviso("O compromisso especificado não existe");
                 return retorno;
             }
             catch (Exception ex)
@@ -70,9 +71,7 @@ namespace Service.Services.Implementacoes
             try
             {
                 var retorno = await _compromissoRepositorio.ExcluirCompromisso(idCompromisso);
-
-                if (!retorno) _mensagens.AdicionarAviso("O compromisso não existe no sistema");
-
+                if (!retorno) _mensagens.AdicionarAviso("O compromisso especificado não existe");
                 return retorno;
             }
             catch (Exception ex)
