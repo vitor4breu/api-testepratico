@@ -1,4 +1,4 @@
-﻿namespace Domain.Models
+﻿namespace Dominio.Models
 {
     public class CompromissoDominio
     {
@@ -6,6 +6,5 @@
         public DateTime Data { get; set; }
         public DateTime? DataInclusao { get; set; }
         public string Texto { get; set; }
-        public int IdUsuario { get; set; }
     }
 }

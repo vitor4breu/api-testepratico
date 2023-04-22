@@ -1,8 +1,7 @@
-﻿using Domain.Interfaces.Repositorios;
+﻿using Dapper;
+using Dominio.Interfaces.Repositorios;
+using Dominio.Models;
 using System.Data.Common;
-using Dapper;
-using Domain.Models;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -16,25 +15,24 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task<IEnumerable<CompromissoDominio>> BuscarCompromissosPorUsuario(int idUsuario)
+        public async Task<CompromissoDominio> BuscarCompromisso(int idCompromisso)
         {
             using DbConnection connection = _connection.Sql;
 
             var variaveis = new DynamicParameters();
 
-            variaveis.Add("ID_USUARIO", idUsuario, System.Data.DbType.Int32);
+            variaveis.Add("ID_COMPROMISSO", idCompromisso, System.Data.DbType.Int32);
 
             const string sqlCommand = @"
                 SELECT 
                     ID              AS Id,
                     DATA            AS Data,
                     DATA_INCLUSAO   AS DataInclusao,
-                    TEXTO           AS Texto,
-                    ID_USUARIO      AS IdUsuario
+                    TEXTO           AS Texto
                 FROM COMPROMISSOS
-                    WHERE ID_USUARIO = @ID_USUARIO";
+                    WHERE ID = @ID_COMPROMISSO";
 
-            return await connection.QueryAsync<CompromissoDominio>(sqlCommand, variaveis);
+            return await connection.QueryFirstOrDefaultAsync<CompromissoDominio>(sqlCommand, variaveis);
         }
 
         public async Task<IEnumerable<CompromissoDominio>> BuscarCompromissos()
@@ -46,33 +44,10 @@ namespace Infrastructure.Repositories
                     ID              AS Id,
                     DATA            AS Data,
                     DATA_INCLUSAO   AS DataInclusao,
-                    TEXTO           AS Texto,
-                    ID_USUARIO      AS IdUsuario
+                    TEXTO           AS Texto
                 FROM COMPROMISSOS";
 
             return await connection.QueryAsync<CompromissoDominio>(sqlCommand);
-        }
-
-        public async Task<IEnumerable<CompromissoDominio>> BuscarCompromisso(int idCompromisso)
-        {
-            using DbConnection connection = _connection.Sql;
-
-            var variaveis = new DynamicParameters();
-
-            variaveis.Add("ID", idCompromisso, System.Data.DbType.Int32);
-
-            const string sqlCommand = @"
-                SELECT 
-                    ID              AS Id,
-                    DATA            AS Data,
-                    DATA_INCLUSAO   AS DataInclusao,
-                    TEXTO           AS Texto,
-                    ID_USUARIO      AS IdUsuario
-                FROM COMPROMISSOS
-                    WHERE ID = @ID";
-
-            return await connection.QueryAsync<CompromissoDominio>(sqlCommand, variaveis);
-
         }
 
         public async Task<bool> AlterarCompromisso(CompromissoDominio compromisso)
@@ -84,13 +59,11 @@ namespace Infrastructure.Repositories
             variaveis.Add("ID", compromisso.Id, System.Data.DbType.Int32);
             variaveis.Add("DATA", compromisso.Data, System.Data.DbType.DateTime);
             variaveis.Add("TEXTO", compromisso.Texto, System.Data.DbType.String, size: 150);
-            variaveis.Add("ID_USUARIO", compromisso.IdUsuario, System.Data.DbType.Int32);
 
             const string sqlCommand = @"
                  UPDATE COMPROMISSOS SET
                     DATA = @DATA,
                     TEXTO = @TEXTO
-                    ID_USUARIO = @ID_USUARIO
                 WHERE ID = @ID";
 
             return await connection.ExecuteAsync(sqlCommand, variaveis) > 0;
@@ -111,7 +84,7 @@ namespace Infrastructure.Repositories
             return await connection.ExecuteAsync(sqlCommand, variaveis) > 0;
         }
 
-        public async Task<bool> InserirCompromisso(CompromissoDominio compromisso)
+        public async Task<int> InserirCompromisso(CompromissoDominio compromisso)
         {
             using DbConnection connection = _connection.Sql;
 
@@ -120,14 +93,15 @@ namespace Infrastructure.Repositories
             variaveis.Add("DATA", compromisso.Data, System.Data.DbType.DateTime);
             variaveis.Add("DATA_INCLUSAO", DateTime.Now, System.Data.DbType.DateTime);
             variaveis.Add("TEXTO", compromisso.Texto, System.Data.DbType.String, size: 150);
-            variaveis.Add("ID_USUARIO", compromisso.IdUsuario, System.Data.DbType.Int32);
 
             const string sqlCommand = @"
                 INSERT INTO 
-                    COMPROMISSOS(DATA, DATA_INCLUSAO, TEXTO, ID_USUARIO)
-                    VALUES(@DATA, @DATA_INCLUSAO, @TEXTO, @ID_USUARIO)";
+                    COMPROMISSOS(DATA, DATA_INCLUSAO, TEXTO)
+                    VALUES(@DATA, @DATA_INCLUSAO, @TEXTO)
 
-            return await connection.ExecuteAsync(sqlCommand, variaveis) > 0;
+                SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+            return await connection.ExecuteScalarAsync<int>(sqlCommand, variaveis);
         }
     }
 }

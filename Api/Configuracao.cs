@@ -1,50 +1,16 @@
-﻿using AutoMapper;
-using Domain.Interfaces.Repositorios;
-using Domain.Interfaces.Services;
-using Domain.Interfaces.Servicos;
-using Domain.Retorno;
+﻿using Dominio.Interfaces.Repositorios;
+using Dominio.Interfaces.Servicos;
+using Dominio.Retorno;
 using Infrastructure;
+using Infrastructure.Configuracoes;
 using Infrastructure.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Service.Services.Implementacoes;
-using System.Text;
 
 namespace Api
 {
     public static class Configuracao
     {
-        private static void ConfigurarTokenJwt(IServiceCollection ServicesConfiguration, IConfiguration configuration)
-        {
-            ServicesConfiguration.AddAuthentication(config =>
-            {
-                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            });
-
-            var key = configuration.GetValue<string>("TokenKey");
-
-            var keyBytes = Encoding.ASCII.GetBytes(key);
-
-            ServicesConfiguration.AddAuthentication(auth =>
-            {
-                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(token =>
-            {
-                token.RequireHttpsMetadata = false;
-                token.SaveToken = true;
-                token.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-        }
 
         private static void ConfigurarSwagger(IServiceCollection ServicesConfiguration)
         {
@@ -80,16 +46,13 @@ namespace Api
 
         private static void ConfigurarServicos(IServiceCollection ServicesConfiguration)
         {
-            ServicesConfiguration.AddScoped<IAuthService, AuthService>();
             ServicesConfiguration.AddScoped<ICompromissoServico, CompromissoServico>();
-            ServicesConfiguration.AddScoped<ITokenService, TokenService>();
 
         }
 
         private static void ConfigurarRepositorios(IServiceCollection ServicesConfiguration)
         {
             ServicesConfiguration.AddSingleton<ICompromissoRepositorio, CompromissoRepositorio>();
-            ServicesConfiguration.AddSingleton<IAuthRepositorio, AuthRepositorio>();
         }
 
 
@@ -98,12 +61,17 @@ namespace Api
             ConfigurarServicos(ServicesConfiguration);
             ConfigurarRepositorios(ServicesConfiguration);
             ConfigurarSwagger(ServicesConfiguration);
-            ConfigurarTokenJwt(ServicesConfiguration, Configuration);
 
             var mapperConfig = AdapterDtoDomain.MapperRegister();
             var mapper = mapperConfig.CreateMapper();
 
+            ConfiguracaoBancoDeDados configuracaoRepositorio = new()
+            {
+                SQLConnectionString = Environment.GetEnvironmentVariable("SQL_CONNECTIONSTRING") ?? string.Empty,
+            };
+
             ServicesConfiguration
+                .AddSingleton(configuracaoRepositorio)
                 .AddSingleton<ConexaoSQL>()
                 .AddScoped<MensagemRetorno>()
                 .AddSingleton(mapper);

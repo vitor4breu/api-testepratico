@@ -1,14 +1,9 @@
 ﻿using AutoMapper;
-using Domain.Interfaces.Repositorios;
-using Domain.Interfaces.Servicos;
-using Domain.Models;
-using Domain.Retorno;
+using Dominio.Interfaces.Repositorios;
+using Dominio.Interfaces.Servicos;
+using Dominio.Models;
+using Dominio.Retorno;
 using Servico.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services.Implementacoes
 {
@@ -25,13 +20,15 @@ namespace Service.Services.Implementacoes
             _mensagens = mensagens;
         }
 
-        public async Task<bool> AlterarCompromisso(CompromissoAlteradoDto compromisso) { 
+        public async Task<bool> AlterarCompromisso(CompromissoAlteracaoDto compromisso)
+        {
 
             try
             {
                 var retorno = await _compromissoRepositorio.AlterarCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
                 return retorno;
-            } catch( Exception ex)
+            }
+            catch (Exception ex)
             {
                 _mensagens.AdicionarErro(ex.Message);
                 return false;
@@ -51,22 +48,22 @@ namespace Service.Services.Implementacoes
                 return null;
             };
         }
-           
 
-        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissosPorUsuario(int idUsuario)
+
+        public async Task<CompromissoDto> ObterCompromisso(int idCompromisso)
         {
             try
             {
-                var retorno = _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissosPorUsuario(idUsuario));
+                var retorno = _mapper.Map<CompromissoDto>(await _compromissoRepositorio.BuscarCompromisso(idCompromisso));
                 return retorno;
             }
             catch (Exception ex)
             {
                 _mensagens.AdicionarErro(ex.Message);
-                return null ;
+                return null;
             };
         }
-            
+
 
         public async Task<bool> DeletarCompromisso(int idCompromisso)
         {
@@ -74,7 +71,7 @@ namespace Service.Services.Implementacoes
             {
                 var retorno = await _compromissoRepositorio.ExcluirCompromisso(idCompromisso);
 
-                if(!retorno) _mensagens.AdicionarAviso("O compromisso não existe no sistema");
+                if (!retorno) _mensagens.AdicionarAviso("O compromisso não existe no sistema");
 
                 return retorno;
             }
@@ -84,9 +81,9 @@ namespace Service.Services.Implementacoes
                 return false;
             };
         }
-        
 
-        public async Task<bool> InserirCompromisso(CompromissoDto compromisso)
+
+        public async Task<int?> InserirCompromisso(CompromissoDto compromisso)
         {
             try
             {
@@ -97,9 +94,9 @@ namespace Service.Services.Implementacoes
             catch (Exception ex)
             {
                 _mensagens.AdicionarErro(ex.Message);
-                return false;
+                return null;
             };
         }
-        
+
     }
 }

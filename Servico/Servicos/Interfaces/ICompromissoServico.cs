@@ -1,15 +1,14 @@
-﻿using Domain.Models;
-using Servico.DTOs;
+﻿using Servico.DTOs;
 
-namespace Domain.Interfaces.Servicos
+namespace Dominio.Interfaces.Servicos
 {
     public interface ICompromissoServico
 
     {
-        public Task<IEnumerable<CompromissoDto>> BuscarCompromissosPorUsuario(int idUsuario);
+        public Task<CompromissoDto> ObterCompromisso(int idCompromisso);
         public Task<IEnumerable<CompromissoDto>> BuscarCompromissos();
-        public Task<bool> InserirCompromisso(CompromissoDto compromisso);
-        public Task<bool> AlterarCompromisso(CompromissoAlteradoDto compromisso);
+        public Task<int?> InserirCompromisso(CompromissoDto compromisso);
+        public Task<bool> AlterarCompromisso(CompromissoAlteracaoDto compromisso);
         public Task<bool> DeletarCompromisso(int idCompromisso);
     }
 }

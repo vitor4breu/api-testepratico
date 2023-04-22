@@ -1,12 +1,12 @@
-﻿using Domain.Models;
+﻿using Dominio.Models;
 
-namespace Domain.Interfaces.Repositorios
+namespace Dominio.Interfaces.Repositorios
 {
     public interface ICompromissoRepositorio
     {
-        public Task<IEnumerable<CompromissoDominio>> BuscarCompromissosPorUsuario(int idUsuario);
+        public Task<CompromissoDominio> BuscarCompromisso(int idCompromisso);
         public Task<IEnumerable<CompromissoDominio>> BuscarCompromissos();
-        public Task<bool> InserirCompromisso(CompromissoDominio compromisso);
+        public Task<int> InserirCompromisso(CompromissoDominio compromisso);
         public Task<bool> AlterarCompromisso(CompromissoDominio compromisso);
         public Task<bool> ExcluirCompromisso(int idCompromisso);
     }

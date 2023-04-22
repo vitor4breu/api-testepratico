@@ -1,10 +1,9 @@
-﻿using Domain;
-using Domain.Retorno;
+﻿using Dominio.Retorno;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class BaseController : ControllerBase
     {

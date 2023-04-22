@@ -1,4 +1,4 @@
-﻿namespace Domain.Retorno
+﻿namespace Dominio.Retorno
 {
     public class MensagemRetorno
     {

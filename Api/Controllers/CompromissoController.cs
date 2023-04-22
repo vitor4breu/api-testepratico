@@ -1,12 +1,10 @@
-﻿using Domain.Interfaces.Servicos;
-using Domain.Retorno;
-using Microsoft.AspNetCore.Authorization;
+﻿using Dominio.Interfaces.Servicos;
+using Dominio.Retorno;
 using Microsoft.AspNetCore.Mvc;
 using Servico.DTOs;
 
 namespace Api.Controllers
 {
-    [Route("[controller]/[action]")]
     [ApiController]
     public class CompromissoController : BaseController
     {
@@ -18,23 +16,20 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> ObterCompromissos()
         {
             var users = await _compromissoService.BuscarCompromissos();
             return GerarRetorno(users);
         }
 
-        [HttpGet("{idUsuario}")]
-        [Authorize]
-        public async Task<IActionResult> ObterCompromissos([FromQuery] int idUsuario)
+        [HttpGet("{idCompromisso}")]
+        public async Task<IActionResult> ObterCompromisso(int idCompromisso)
         {
-            var users = await _compromissoService.BuscarCompromissosPorUsuario(idUsuario);
+            var users = await _compromissoService.ObterCompromisso(idCompromisso);
             return GerarRetorno(users);
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> InserirCompromissos([FromBody] CompromissoDto compromisso)
         {
             var users = await _compromissoService.InserirCompromisso(compromisso);
@@ -42,16 +37,14 @@ namespace Api.Controllers
         }
 
         [HttpDelete("{idCompromisso}")]
-        [Authorize]
-        public async Task<IActionResult> DeletarCompromisso([FromQuery] int idCompromisso)
+        public async Task<IActionResult> DeletarCompromisso(int idCompromisso)
         {
             var users = await _compromissoService.DeletarCompromisso(idCompromisso);
             return GerarRetorno(users);
         }
 
         [HttpPut]
-        [Authorize]
-        public async Task<IActionResult> AlterarCompromisso([FromBody] CompromissoAlteradoDto compromisso)
+        public async Task<IActionResult> AlterarCompromisso([FromBody] CompromissoAlteracaoDto compromisso)
         {
             var users = await _compromissoService.AlterarCompromisso(compromisso);
             return GerarRetorno(users);
