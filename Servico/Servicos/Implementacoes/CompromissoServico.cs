@@ -2,6 +2,7 @@
 using Domain.Interfaces.Repositorios;
 using Domain.Interfaces.Servicos;
 using Domain.Models;
+using Domain.Retorno;
 using Servico.DTOs;
 using System;
 using System.Collections.Generic;
@@ -15,27 +16,90 @@ namespace Service.Services.Implementacoes
     {
         private readonly ICompromissoRepositorio _compromissoRepositorio;
         private readonly IMapper _mapper;
+        private readonly MensagemRetorno _mensagens;
 
-        public CompromissoServico(ICompromissoRepositorio compromissoRepositorio, IMapper mapper)
+        public CompromissoServico(ICompromissoRepositorio compromissoRepositorio, IMapper mapper, MensagemRetorno mensagens)
         {
             _compromissoRepositorio = compromissoRepositorio;
             _mapper = mapper;
+            _mensagens = mensagens;
         }
 
-        public Task<bool> AlterarCompromisso(CompromissoAlteradoDto compromisso) =>
-            _compromissoRepositorio.AlterarCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
+        public async Task<bool> AlterarCompromisso(CompromissoAlteradoDto compromisso) { 
 
-        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissos() =>
-            _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissos());
+            try
+            {
+                var retorno = await _compromissoRepositorio.AlterarCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
+                return retorno;
+            } catch( Exception ex)
+            {
+                _mensagens.AdicionarErro(ex.Message);
+                return false;
+            };
+        }
 
-        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissosPorUsuario(int idUsuario) =>
-            _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissosPorUsuario(idUsuario));
+        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissos()
+        {
+            try
+            {
+                var retorno = _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissos());
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                _mensagens.AdicionarErro(ex.Message);
+                return null;
+            };
+        }
+           
 
-        public async Task<bool> DeletarCompromisso(int idCompromisso) =>
-            await _compromissoRepositorio.ExcluirCompromisso(idCompromisso);
+        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissosPorUsuario(int idUsuario)
+        {
+            try
+            {
+                var retorno = _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissosPorUsuario(idUsuario));
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                _mensagens.AdicionarErro(ex.Message);
+                return null ;
+            };
+        }
+            
 
-        public async Task<bool> InserirCompromisso(CompromissoDto compromisso) =>
-            await _compromissoRepositorio.InserirCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
+        public async Task<bool> DeletarCompromisso(int idCompromisso)
+        {
+            try
+            {
+                var retorno = await _compromissoRepositorio.ExcluirCompromisso(idCompromisso);
+
+                if(!retorno) _mensagens.AdicionarAviso("O compromisso não existe no sistema");
+
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                _mensagens.AdicionarErro(ex.Message);
+                return false;
+            };
+        }
+        
+
+        public async Task<bool> InserirCompromisso(CompromissoDto compromisso)
+        {
+            try
+            {
+                var retorno = await _compromissoRepositorio.InserirCompromisso(_mapper.Map<CompromissoDominio>(compromisso));
+
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                _mensagens.AdicionarErro(ex.Message);
+                return false;
+            };
+        }
         
     }
 }
