@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Dominio.Models;
-using Servico.DTOs;
+using Servico.DTOs.Compromisso;
 
 namespace Api
 {
@@ -10,7 +10,7 @@ namespace Api
         {
             return new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CompromissoDto, CompromissoDominio>(MemberList.None)
+                cfg.CreateMap<CompromissoInsercaoDto, CompromissoDominio>(MemberList.None)
                     .ForMember(dom => dom.Data, y => y.MapFrom(dto => dto.Data))
                     .ForMember(dom => dom.Texto, y => y.MapFrom(dto => dto.Texto))
                     .ForMember(dom => dom.Id, opt => opt.Ignore())
@@ -23,6 +23,13 @@ namespace Api
                     .ForMember(dto => dto.Id, y => y.MapFrom(dto => dto.Id))
                     .ForMember(dom => dom.DataInclusao, opt => opt.Ignore())
                     .ReverseMap();
+
+                cfg.CreateMap<CompromissoVisualizacaoDto, CompromissoDominio>(MemberList.None)
+                   .ForMember(dto => dto.Data, y => y.MapFrom(dto => dto.Data))
+                   .ForMember(dto => dto.Texto, y => y.MapFrom(dto => dto.Texto))
+                   .ForMember(dto => dto.Id, y => y.MapFrom(dto => dto.Id))
+                   .ForMember(dom => dom.DataInclusao, opt => opt.Ignore())
+                   .ReverseMap();
 
             });
         }

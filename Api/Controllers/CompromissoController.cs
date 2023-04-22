@@ -1,7 +1,7 @@
 ﻿using Dominio.Interfaces.Servicos;
 using Dominio.Retorno;
 using Microsoft.AspNetCore.Mvc;
-using Servico.DTOs;
+using Servico.DTOs.Compromisso;
 
 namespace Api.Controllers
 {
@@ -30,7 +30,7 @@ namespace Api.Controllers
         /// Endpoint responsável por obter determinado compromisso de acordo com o Id inserido.
         /// </summary>
         /// <param name="idCompromisso">Id do compromisso.</param>
-        /// <returns>Objeto com data e texto do compromisso.</returns>
+        /// <returns>Objeto com Id, data e texto do compromisso.</returns>
         [HttpGet("{idCompromisso}")]
         public async Task<IActionResult> ObterCompromisso(int idCompromisso)
         {
@@ -44,7 +44,7 @@ namespace Api.Controllers
         /// <param name="compromisso">Objeto com data e texto.</param>
         /// <returns>Id do compromisso inserido.</returns>
         [HttpPost]
-        public async Task<IActionResult> InserirCompromissos([FromBody] CompromissoDto compromisso)
+        public async Task<IActionResult> InserirCompromissos([FromBody] CompromissoInsercaoDto compromisso)
         {
             var users = await _compromissoService.InserirCompromisso(compromisso);
             return GerarRetorno(users);

@@ -3,7 +3,7 @@ using Dominio.Interfaces.Repositorios;
 using Dominio.Interfaces.Servicos;
 using Dominio.Models;
 using Dominio.Retorno;
-using Servico.DTOs;
+using Servico.DTOs.Compromisso;
 
 namespace Service.Services.Implementacoes
 {
@@ -35,11 +35,11 @@ namespace Service.Services.Implementacoes
             };
         }
 
-        public async Task<IEnumerable<CompromissoDto>> BuscarCompromissos()
+        public async Task<IEnumerable<CompromissoVisualizacaoDto>> BuscarCompromissos()
         {
             try
             {
-                var retorno = _mapper.Map<IEnumerable<CompromissoDto>>(await _compromissoRepositorio.BuscarCompromissos());
+                var retorno = _mapper.Map<IEnumerable<CompromissoVisualizacaoDto>>(await _compromissoRepositorio.BuscarCompromissos());
                 return retorno;
             }
             catch (Exception ex)
@@ -50,11 +50,11 @@ namespace Service.Services.Implementacoes
         }
 
 
-        public async Task<CompromissoDto> ObterCompromisso(int idCompromisso)
+        public async Task<CompromissoVisualizacaoDto> ObterCompromisso(int idCompromisso)
         {
             try
             {
-                var retorno = _mapper.Map<CompromissoDto>(await _compromissoRepositorio.BuscarCompromisso(idCompromisso));
+                var retorno = _mapper.Map<CompromissoVisualizacaoDto>(await _compromissoRepositorio.BuscarCompromisso(idCompromisso));
                 return retorno;
             }
             catch (Exception ex)
@@ -83,7 +83,7 @@ namespace Service.Services.Implementacoes
         }
 
 
-        public async Task<int?> InserirCompromisso(CompromissoDto compromisso)
+        public async Task<int?> InserirCompromisso(CompromissoInsercaoDto compromisso)
         {
             try
             {

@@ -1,6 +1,6 @@
-﻿namespace Servico.DTOs
+﻿namespace Servico.DTOs.Compromisso
 {
-    public class CompromissoDto
+    public class CompromissoInsercaoDto
     {
         public DateTime Data { get; set; }
         public string Texto { get; set; }

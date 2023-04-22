@@ -1,5 +1,4 @@
-﻿
-namespace Servico.DTOs
+﻿namespace Servico.DTOs.Compromisso
 {
     public class CompromissoAlteracaoDto
     {
