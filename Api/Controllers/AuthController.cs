@@ -17,12 +17,19 @@ namespace Api.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Autenticar([FromBody] Login login)
         {
             var tokenLogin = await _authService.Autenticar(login.Username, login.Password);
             return GerarRetorno(tokenLogin);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Teste([FromBody] Login login)
+        {
+            return GerarRetorno(false);
         }
     }
 }
