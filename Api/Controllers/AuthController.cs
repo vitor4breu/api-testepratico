@@ -17,7 +17,7 @@ namespace Api.Controllers
             _authService = authService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Autenticar([FromBody] Login login)
         {
@@ -25,9 +25,8 @@ namespace Api.Controllers
             return GerarRetorno(tokenLogin);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> Teste([FromBody] Login login)
+        [HttpPost]
+        public async Task<IActionResult> Teste()
         {
             return GerarRetorno(false);
         }
